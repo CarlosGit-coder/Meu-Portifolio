@@ -8,15 +8,15 @@
     <style>
       /* Cores */
       :root {
-        --cor-principal: #1e90ff; /* Azul claro */
-        --cor-secundaria: #f4f4f4; /* Fundo claro */
-        --cor-escura: #333; /* Texto escuro */
-        --cor-clara: #fff; /* Texto claro */
-        --cor-footer: #222; /* Cor do footer */
+        --cor-principal: #09ceff; /* Azul escuro metálico */
+        --cor-secundaria: #212121; /* Preto escuro */
+        --cor-clara: #f1f1f1; /* Branco off */
+        --cor-footer: #1e1e1e; /* Cinza escuro para o footer */
+        --cor-destaque: #2710f7; /* Azul metálico para destaque */
       }
 
       /* Resetando alguns estilos */
-      body, h1, h3, p, ul {
+      body, h3, p, ul {
         margin: 0;
         padding: 0;
         font-family: 'Roboto', sans-serif;
@@ -25,21 +25,33 @@
       /* Estilos gerais */
       body {
         background-color: var(--cor-secundaria);
-        color: var(--cor-escura);
+        color: var(--cor-clara);
         line-height: 1.6;
         padding: 0;
         margin: 0;
       }
 
-      h1, h3 {
+      h3 {
         font-family: 'Open Sans', sans-serif;
         color: var(--cor-principal);
         text-align: center;
         margin-bottom: 15px;
+        font-weight: 500;
+        transition: color 0.3s ease;
       }
 
-      h3 {
-        margin-top: 30px;
+      h1:hover, h3:hover {
+        color: var(--cor-destaque);
+      }
+
+      /* Reduzindo o tamanho da fonte do nome */
+      h1 {
+        font-size: 2rem; /* Tamanho reduzido */
+        text-align: center;
+        margin-top: 30px; /* Espaço no topo */
+        margin-bottom: 10px;
+        font-family: 'Open Sans', sans-serif;
+        color: var(--cor-principal);
       }
 
       p, ul {
@@ -51,27 +63,37 @@
       a {
         color: var(--cor-principal);
         text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
       }
 
       a:hover {
+        color: var(--cor-destaque);
         text-decoration: underline;
       }
 
       section {
-        max-width: 800px;
+        max-width: 900px;
         margin: 30px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        background-color: #292929;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      /* Estilos do footer */
+      section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      }
+
       footer {
         background-color: var(--cor-footer);
         color: var(--cor-clara);
         text-align: center;
         padding: 20px 0;
+        font-size: 0.9rem;
+        margin-top: 40px;
       }
 
       footer p {
@@ -81,31 +103,91 @@
       footer a {
         color: var(--cor-clara);
         text-decoration: none;
+        font-weight: bold;
       }
 
       footer a:hover {
         text-decoration: underline;
+        transition: text-decoration 0.3s ease;
       }
 
       /* Estilos para links de projetos */
       ul li {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+      }
+
+      .btn-projeto {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: var(--cor-principal);
+        color: var(--cor-clara);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .btn-projeto:hover {
+        background-color: var(--cor-destaque);
+        transform: scale(1.05);
+      }
+
+      /* Barra de navegação */
+      nav {
+        background-color: var(--cor-principal);
+        padding: 15px 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        list-style: none;
+        padding: 0;
+      }
+
+      nav ul li {
+        font-size: 1.2rem;
+      }
+
+      nav ul li a {
+        color: var(--cor-clara);
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      nav ul li a:hover {
+        text-decoration: underline;
+        transition: text-decoration 0.3s ease;
       }
 
       /* Responsividade */
       @media screen and (max-width: 768px) {
         section {
-          padding: 15px;
+          padding: 20px;
         }
-      }
 
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        footer {
+          font-size: 0.8rem;
+        }
+        
+      }
     </style>
   </head>
   <body>
     <header>
-      <nav style="background-color: var(--cor-principal); padding: 10px 0;">
-        <ul style="display: flex; justify-content: center; gap: 30px; list-style: none; padding: 0;">
+      <nav>
+        <ul>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#habilidades">Habilidades</a></li>
           <li><a href="#projetos">Projetos</a></li>
@@ -134,8 +216,8 @@
     <section id="projetos">
       <h3>Projetos</h3>
       <ul>
-        <li>Projeto 1: <a href="#">Link</a></li>
-        <li>Projeto 2: <a href="#">Link</a></li>
+        <li>Projeto 1: <a class="btn-projeto" href="#">Link</a></li>
+        <li>Projeto 2: <a class="btn-projeto" href="#">Link</a></li>
       </ul>
     </section>
 
@@ -148,7 +230,7 @@
     </section>
 
     <footer>
-      <p>&copy; 2025 Carlos Gabriel Monteiro de Sousa. Todos os direitos reservados.</p>
+      <p>2025 Carlos Gabriel Monteiro de Sousa. Todos os direitos reservados.</p>
       <p>Desenvolvido por Carlos Gabriel Monteiro</p>
     </footer>
   </body>
